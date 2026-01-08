@@ -5,7 +5,19 @@ import { getAssetUrl } from "@/lib/assets"
 import type { Message, ChannelData } from "@/lib/channel-data"
 import type { Member } from "@/lib/member-data"
 import { useMembers } from "@/hooks/use-members"
-import { useEffect, useRef, useMemo } from "react"
+import { useEffect, useRef, useMemo, type ReactNode } from "react"
+
+// \n을 줄바꿈으로 변환
+function formatContent(content: string): ReactNode {
+  const lines = content.split('\n')
+
+  return lines.map((line, index) => (
+    <span key={index}>
+      {line}
+      {index < lines.length - 1 && <br />}
+    </span>
+  ))
+}
 
 interface ChatMessagesProps {
   channelData: ChannelData
@@ -139,7 +151,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
           )}
           <span className="text-xs text-muted-foreground">{message.timestamp}</span>
         </div>
-        <div className="text-foreground leading-relaxed mt-1">{message.content}</div>
+        <div className="text-foreground leading-relaxed mt-1">{formatContent(message.content)}</div>
         {message.image && (
           <div className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden">
             <img src={getAssetUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
