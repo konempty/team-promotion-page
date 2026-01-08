@@ -3,6 +3,8 @@
   "name": "Express Cargo 소개",
   "order": 3,
   "icon": "Hash",
+  "leaderId": "나구원",
+  "leaderTitle": "프로젝트장",
   "history": [
     {
       "authorId": "나구원",

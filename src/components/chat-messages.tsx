@@ -45,7 +45,13 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
   return (
     <div className="flex-1 overflow-y-auto p-4 space-y-4">
       {allMessages.map((message) => (
-        <MessageItem key={message.id} message={message} memberMap={memberMap} />
+        <MessageItem
+          key={message.id}
+          message={message}
+          memberMap={memberMap}
+          leaderId={channelData.leaderId}
+          leaderTitle={channelData.leaderTitle}
+        />
       ))}
       <div ref={messagesEndRef} />
     </div>
@@ -55,12 +61,15 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
 interface MessageItemProps {
   message: Message
   memberMap: Map<string, Member>
+  leaderId?: string
+  leaderTitle?: string
 }
 
-function MessageItem({ message, memberMap }: MessageItemProps) {
+function MessageItem({ message, memberMap, leaderId, leaderTitle }: MessageItemProps) {
   // Get member info if authorId exists
   const member = message.authorId ? memberMap.get(message.authorId) : undefined
   const isVisitor = message.isVisitor === true
+  const isLeader = leaderId && message.authorId === leaderId
 
   // Use member data if available, otherwise fall back to message data
   const authorName = member?.name ?? message.author ?? "Unknown"
@@ -146,6 +155,9 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2">
           <span className="font-semibold text-foreground">{authorName}</span>
+          {isLeader && leaderTitle && (
+            <span className="text-sm text-muted-foreground">({leaderTitle})</span>
+          )}
           {message.isBot && (
             <span className="text-xs bg-primary px-1.5 py-0.5 rounded text-primary-foreground font-medium">BOT</span>
           )}

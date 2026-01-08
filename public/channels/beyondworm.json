@@ -3,6 +3,8 @@
   "name": "BeyondWorm 소개",
   "order": 2,
   "icon": "Hash",
+  "leaderId": "박예훈",
+  "leaderTitle": "프로젝트장",
   "history": [
     {
       "authorId": "박예훈",

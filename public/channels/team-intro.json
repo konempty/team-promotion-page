@@ -3,6 +3,8 @@
   "name": "팀 소개",
   "order": 1,
   "icon": "Hash",
+  "leaderId": "김한빈",
+  "leaderTitle": "팀장",
   "history": [
     {
       "authorId": "김한빈",

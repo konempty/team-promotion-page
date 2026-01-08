@@ -24,6 +24,8 @@ export interface ChannelData {
   name: string
   order?: number
   icon?: string
+  leaderId?: string       // 리더 멤버 ID (팀장/프로젝트장)
+  leaderTitle?: string    // 리더 타이틀 (예: "팀장", "프로젝트장")
   history: Message[]
   presets?: QuestionPreset[]
   isContactForm?: boolean

@@ -47,6 +47,8 @@ public/channels/
   "name": "새 프로젝트 소개",
   "order": 4,
   "icon": "Hash",
+  "leaderId": "김한빈",
+  "leaderTitle": "프로젝트장",
   "history": [
     {
       "authorId": "김한빈",
@@ -81,15 +83,17 @@ public/channels/
 
 #### 채널 JSON 구조
 
-| 필드 | 타입 | 필수 | 설명 |
-|------|------|------|------|
-| `id` | string | O | 채널 고유 ID (파일명과 동일) |
-| `name` | string | O | 채널 표시 이름 |
-| `order` | number | X | 정렬 순서 (낮을수록 위) |
-| `icon` | string | X | 아이콘 타입 (기본: "Hash") |
-| `history` | Message[] | O | 초기 채팅 메시지 목록 |
-| `presets` | QuestionPreset[] | X | 질문 프리셋 목록 |
-| `isContactForm` | boolean | X | 문의 폼 활성화 여부 |
+| 필드              | 타입               | 필수 | 설명                        |
+|-----------------|------------------|----|---------------------------|
+| `id`            | string           | O  | 채널 고유 ID (파일명과 동일)        |
+| `name`          | string           | O  | 채널 표시 이름                  |
+| `order`         | number           | X  | 정렬 순서 (낮을수록 위)            |
+| `icon`          | string           | X  | 아이콘 타입 (기본: "Hash")       |
+| `leaderId`      | string           | X  | 리더 멤버 ID (이름 옆에 타이틀 표시)   |
+| `leaderTitle`   | string           | X  | 리더 타이틀 (예: "팀장", "프로젝트장") |
+| `history`       | Message[]        | O  | 초기 채팅 메시지 목록              |
+| `presets`       | QuestionPreset[] | X  | 질문 프리셋 목록                 |
+| `isContactForm` | boolean          | X  | 문의 폼 활성화 여부               |
 
 ##### Message 구조
 
