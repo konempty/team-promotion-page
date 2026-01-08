@@ -6,7 +6,7 @@ export interface Message {
   content: string
   image?: string
   images?: string[]
-  timestamp: string
+  timestamp?: string     // 생략 시 자동 생성
   isBot?: boolean
   isVisitor?: boolean    // 방문자 메시지 여부
 }
@@ -38,6 +38,37 @@ export interface ChannelInfo {
 
 import { getAssetUrl } from "./assets"
 
+// 시간을 한국어 형식으로 포맷 (오전/오후 HH:MM)
+function formatTimeKorean(date: Date): string {
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const period = hours < 12 ? '오전' : '오후'
+  const displayHours = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours
+  const displayMinutes = minutes.toString().padStart(2, '0')
+  return `${period} ${displayHours}:${displayMinutes}`
+}
+
+// 메시지에 타임스탬프가 없으면 자동 생성 (1~2분 간격)
+function generateTimestamps(messages: Message[]): Message[] {
+  const now = new Date()
+  const totalMessages = messages.length
+
+  return messages.map((message, index) => {
+    if (message.timestamp) {
+      return message
+    }
+
+    // 마지막 메시지부터 현재 시간에 가깝게, 이전 메시지는 1~2분씩 과거로
+    const minutesAgo = (totalMessages - 1 - index) * 1.5 // 평균 1.5분 간격
+    const messageTime = new Date(now.getTime() - minutesAgo * 60 * 1000)
+
+    return {
+      ...message,
+      timestamp: formatTimeKorean(messageTime)
+    }
+  })
+}
+
 // Fetch channel list from index.json
 export async function fetchChannelList(): Promise<string[]> {
   const response = await fetch(getAssetUrl("/channels/index.json"))
@@ -53,7 +84,12 @@ export async function fetchChannelData(channelId: string): Promise<ChannelData> 
   if (!response.ok) {
     throw new Error(`Failed to fetch channel: ${channelId}`)
   }
-  return response.json()
+  const data: ChannelData = await response.json()
+
+  // 타임스탬프가 없는 메시지에 자동 생성
+  data.history = generateTimestamps(data.history)
+
+  return data
 }
 
 // Fetch all channels data

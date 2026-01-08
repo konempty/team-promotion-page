@@ -6,28 +6,23 @@
   "history": [
     {
       "authorId": "나구원",
-      "content": "반갑습니다 Express Cargo의 프로젝트장 나구원입니다. 저희 프로젝트원들과 함께 프로젝트를 소개할게요!",
-      "timestamp": "오전 11:20"
+      "content": "반갑습니다 Express Cargo의 프로젝트장 나구원입니다. 저희 프로젝트원들과 함께 프로젝트를 소개할게요!"
     },
     {
       "authorId": "정은영",
-      "content": "Express.js에서 요청 데이터 처리할 때 매번 파싱 로직 작성하는 게 너무 번거로웠는데, 이걸 해결하려고 시작한 프로젝트예요.",
-      "timestamp": "오전 11:22"
+      "content": "Express.js에서 요청 데이터 처리할 때 매번 파싱 로직 작성하는 게 너무 번거로웠는데, 이걸 해결하려고 시작한 프로젝트예요."
     },
     {
       "authorId": "김채원",
-      "content": "데코레이터 기반으로 @Body, @Query 같은 걸 쓰면 자동으로 바인딩되니까 코드가 훨씬 깔끔해져요!",
-      "timestamp": "오전 11:24"
+      "content": "데코레이터 기반으로 @Body, @Query 같은 걸 쓰면 자동으로 바인딩되니까 코드가 훨씬 깔끔해져요!"
     },
     {
       "authorId": "윤재현",
-      "content": "검증 데코레이터도 있어서 @Email, @Min, @Max 같은 걸로 유효성 검사도 간단하게 처리할 수 있어요.",
-      "timestamp": "오전 11:26"
+      "content": "검증 데코레이터도 있어서 @Email, @Min, @Max 같은 걸로 유효성 검사도 간단하게 처리할 수 있어요."
     },
     {
       "authorId": "나구원",
-      "content": "TypeScript 기반이라 타입 안전성도 보장되고, npm에 배포해서 누구나 사용할 수 있어요!",
-      "timestamp": "오전 11:28"
+      "content": "TypeScript 기반이라 타입 안전성도 보장되고, npm에 배포해서 누구나 사용할 수 있어요!"
     }
   ],
   "presets": [

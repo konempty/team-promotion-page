@@ -49,16 +49,12 @@ public/channels/
   "icon": "Hash",
   "history": [
     {
-      "id": "1",
-      "authorId": "2",
-      "author": "개발자 A",
-      "content": "새 프로젝트를 소개합니다!",
-      "timestamp": "오전 10:00"
+      "authorId": "김한빈",
+      "content": "새 프로젝트를 소개합니다!"
     }
   ],
   "presets": [
     {
-      "id": "p1",
       "question": "이 프로젝트는 무엇인가요?",
       "answer": "프로젝트 설명입니다."
     }
@@ -99,31 +95,46 @@ public/channels/
 
 ```json
 {
-  "id": "1",
-  "authorId": "1",              // 멤버 ID (멤버와 연결)
-  "author": "작성자 이름",       // authorId가 없을 때 사용
+  "authorId": "김한빈",
   "content": "메시지 내용",
-  "timestamp": "오후 2:30",
-  "avatar": "/avatar.png",      // 선택 (authorId가 없을 때 사용)
-  "isBot": false,               // 선택
-  "image": "/image.jpg",        // 선택 (단일 이미지)
-  "images": ["/img1.jpg"]       // 선택 (여러 이미지)
+  "image": "/image.jpg",
+  "images": ["/img1.jpg"]
 }
 ```
 
-> **멤버 연결**: `authorId`에 멤버의 `id`를 입력하면 해당 멤버의 이름과 프로필 이미지가 자동으로 표시됩니다. Bot 메시지처럼 멤버가 아닌 경우 `authorId`를 생략하고 `author`만 사용하면 됩니다.
+| 필드          | 타입       | 필수 | 설명                          |
+|-------------|----------|----|-----------------------------|
+| `authorId`  | string   | △  | 멤버 ID (멤버 이름과 동일)           |
+| `author`    | string   | △  | 작성자 이름 (authorId가 없을 때 사용)  |
+| `content`   | string   | O  | 메시지 내용 (`\n`으로 줄바꿈 가능)      |
+| `timestamp` | string   | X  | 표시 시간 (생략 시 자동 생성)          |
+| `avatar`    | string   | X  | 프로필 이미지 (authorId가 없을 때 사용) |
+| `isBot`     | boolean  | X  | Bot 메시지 여부                  |
+| `image`     | string   | X  | 단일 이미지 경로                   |
+| `images`    | string[] | X  | 여러 이미지 경로                   |
+
+> **타임스탬프 자동 생성**: `timestamp`를 생략하면 현재 시간 기준으로 메시지마다 약 1~2분 간격으로 자동 생성됩니다.
+
+> **멤버 연결**: `authorId`에 멤버의 `id`(이름)를 입력하면 해당 멤버의 프로필 이미지가 자동으로 표시됩니다.
+> Bot 메시지처럼 멤버가 아닌 경우 `authorId`를 생략하고 `author`만 사용하면 됩니다.
 
 ##### QuestionPreset 구조
 
 ```json
 {
-  "id": "p1",
   "question": "질문 내용",
-  "answer": "답변 내용",
-  "image": "/image.jpg",        // 선택
-  "images": ["/img1.jpg"]       // 선택
+  "answer": "답변 내용\n줄바꿈도 가능합니다.",
+  "image": "/image.jpg",
+  "images": ["/img1.jpg"]
 }
 ```
+
+| 필드         | 타입       | 필수 | 설명                    |
+|------------|----------|----|-----------------------|
+| `question` | string   | O  | 질문 내용                 |
+| `answer`   | string   | O  | 답변 내용 (`\n`으로 줄바꿈 가능) |
+| `image`    | string   | X  | 단일 이미지 경로             |
+| `images`   | string[] | X  | 여러 이미지 경로             |
 
 ---
 
@@ -138,19 +149,20 @@ public/channels/
 ```json
 [
   {
-    "id": "1",
-    "name": "팀장",
-    "role": "Team Leader",
+    "id": "김한빈",
+    "name": "김한빈",
+    "role": "Team Leader, Kakao",
     "status": "online",
+    "avatar": "/avatars/kim-hanbin.png",
     "bio": "팀장 소개글입니다."
   },
   {
-    "id": "5",
-    "name": "새 멤버",
+    "id": "새멤버",
+    "name": "새멤버",
     "role": "Developer",
     "status": "online",
-    "bio": "새로 합류한 개발자입니다.",
-    "avatar": "/avatars/new-member.png"
+    "avatar": "/avatars/new-member.png",
+    "bio": "새로 합류한 개발자입니다."
   }
 ]
 ```
@@ -161,14 +173,14 @@ public/channels/
 
 #### 멤버 JSON 구조
 
-| 필드 | 타입 | 필수 | 설명 |
-|------|------|------|------|
-| `id` | string | O | 멤버 고유 ID |
-| `name` | string | O | 멤버 이름 |
-| `role` | string | O | 역할/직책 |
-| `status` | "online" \| "offline" | O | 상태 (online: 현재 팀원, offline: 탈퇴) |
-| `bio` | string | O | 소개글 |
-| `avatar` | string | X | 프로필 이미지 경로 |
+| 필드       | 타입                    | 필수 | 설명                              |
+|----------|-----------------------|----|---------------------------------|
+| `id`     | string                | O  | 멤버 고유 ID (되도록 이름과 동일하게 설정)      |
+| `name`   | string                | O  | 멤버 이름                           |
+| `role`   | string                | O  | 역할/직책                           |
+| `status` | "online" \| "offline" | O  | 상태 (online: 현재 팀원, offline: 탈퇴) |
+| `bio`    | string                | O  | 소개글                             |
+| `avatar` | string                | X  | 프로필 이미지 경로                      |
 
 ---
 
@@ -179,10 +191,14 @@ public/channels/
 ```
 public/
 ├── beyond_imagination.png    # 팀 로고
-├── avatars/                  # 멤버 아바타
-│   └── member1.png
-└── projects/                 # 프로젝트 이미지
-    └── screenshot.jpg
+├── avatars/                  # 멤버 아바타 (영문 파일명 권장)
+│   ├── kim-hanbin.png
+│   └── kang-minjun.png
+└── chatImages/               # 채팅 이미지
+    └── project/
+        └── screenshot.jpg
 ```
 
-JSON에서 이미지 경로는 `/`로 시작합니다 (예: `/projects/screenshot.jpg`)
+> **주의**: 아바타 파일명은 한글 인코딩 문제를 피하기 위해 영문으로 작성하세요.
+
+JSON에서 이미지 경로는 `/`로 시작합니다 (예: `/chatImages/project/screenshot.jpg`)

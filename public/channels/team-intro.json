@@ -6,23 +6,19 @@
   "history": [
     {
       "authorId": "김한빈",
-      "content": "안녕하세요! Beyond Imagination 팀에 오신 것을 환영합니다. 저는 26년 팀장을 맡은 김한빈입니다!",
-      "timestamp": "오후 2:30"
+      "content": "안녕하세요! Beyond Imagination 팀에 오신 것을 환영합니다. 저는 26년 팀장을 맡은 김한빈입니다!"
     },
     {
       "authorId": "강민준",
-      "content": "우리 팀은 상상을 현실로 만드는 개발자 모임입니다.",
-      "timestamp": "오후 2:32"
+      "content": "우리 팀은 상상을 현실로 만드는 개발자 모임입니다."
     },
     {
       "authorId": "김채원",
-      "content": "취준생에게 도움이 되는 다양한 프로젝트와 활동을 진행하고 있어요!",
-      "timestamp": "오후 2:33"
+      "content": "취준생에게 도움이 되는 다양한 프로젝트와 활동을 진행하고 있어요!"
     },
     {
       "authorId": "김한빈",
-      "content": "저희 팀에 대해 궁금하신 점은 아래 질문 중에서 선택해주세요!",
-      "timestamp": "오후 2:35"
+      "content": "저희 팀에 대해 궁금하신 점은 아래 질문 중에서 선택해주세요!"
     }
   ],
   "presets": [

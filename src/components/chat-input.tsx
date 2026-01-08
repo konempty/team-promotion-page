@@ -35,7 +35,7 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
       author: visitorName,
       content: preset.question,
       timestamp: new Date().toLocaleTimeString("ko-KR", {
-        hour: "2-digit",
+        hour: "numeric",
         minute: "2-digit",
       }),
       isBot: false,
@@ -54,7 +54,7 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
         author: "Bot",
         content: preset.answer,
         timestamp: new Date().toLocaleTimeString("ko-KR", {
-          hour: "2-digit",
+          hour: "numeric",
           minute: "2-digit",
         }),
         isBot: true,
@@ -92,7 +92,7 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
       author: visitorName,
       content: `이메일: ${email}\n\n${inputValue}`,
       timestamp: new Date().toLocaleTimeString("ko-KR", {
-        hour: "2-digit",
+        hour: "numeric",
         minute: "2-digit",
       }),
       isBot: false,
@@ -107,7 +107,7 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
         author: "Bot",
         content: "문의가 정상적으로 전달되었습니다. 빠른 시일 내에 답변 드리겠습니다. 감사합니다!",
         timestamp: new Date().toLocaleTimeString("ko-KR", {
-          hour: "2-digit",
+          hour: "numeric",
           minute: "2-digit",
         }),
         isBot: true,

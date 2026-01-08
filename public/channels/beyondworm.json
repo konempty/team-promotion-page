@@ -6,23 +6,19 @@
   "history": [
     {
       "authorId": "박예훈",
-      "content": "안녕하세요 BeyondWorm의 프로젝트장 박예훈입니다. 저희 BeyondWorm 프로젝트를 소개합니다!",
-      "timestamp": "오전 10:15"
+      "content": "안녕하세요 BeyondWorm의 프로젝트장 박예훈입니다. 저희 BeyondWorm 프로젝트를 소개합니다!"
     },
     {
       "authorId": "김한빈",
-      "content": "이 프로젝트는 정말 흥미로운 도전이었어요.",
-      "timestamp": "오전 10:17"
+      "content": "이 프로젝트는 정말 흥미로운 도전이었어요."
     },
     {
       "authorId": "박예훈",
-      "content": "저도 처음 개발해보는 웹프로젝트라 힘들었지만 그만큼 많은 도움이 되었어요!",
-      "timestamp": "오전 10:18"
+      "content": "저도 처음 개발해보는 웹프로젝트라 힘들었지만 그만큼 많은 도움이 되었어요!"
     },
     {
       "authorId": "박찬규",
-      "content": "중간에 참여했지만 기반이 잘 짜여져 있어서 온보딩이 쉬웠어요 :)",
-      "timestamp": "오전 10:19"
+      "content": "중간에 참여했지만 기반이 잘 짜여져 있어서 온보딩이 쉬웠어요 :)"
     }
   ],
   "presets": [
