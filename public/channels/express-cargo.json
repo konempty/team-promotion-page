@@ -5,37 +5,43 @@
   "icon": "Hash",
   "history": [
     {
-      "id": "1",
-      "authorId": "1",
-      "author": "팀장",
-      "content": "Express Cargo는 우리 팀의 첫 번째 프로젝트입니다.",
+      "authorId": "나구원",
+      "content": "반갑습니다 Express Cargo의 프로젝트장 나구원입니다. 저희 프로젝트원들과 함께 프로젝트를 소개할게요!",
       "timestamp": "오전 11:20"
     },
     {
-      "id": "2",
-      "authorId": "2",
-      "author": "개발자 A",
-      "content": "물류 산업의 디지털 혁신을 목표로 하고 있어요!",
+      "authorId": "정은영",
+      "content": "Express.js에서 요청 데이터 처리할 때 매번 파싱 로직 작성하는 게 너무 번거로웠는데, 이걸 해결하려고 시작한 프로젝트예요.",
       "timestamp": "오전 11:22"
+    },
+    {
+      "authorId": "김채원",
+      "content": "데코레이터 기반으로 @Body, @Query 같은 걸 쓰면 자동으로 바인딩되니까 코드가 훨씬 깔끔해져요!",
+      "timestamp": "오전 11:24"
+    },
+    {
+      "authorId": "윤재현",
+      "content": "검증 데코레이터도 있어서 @Email, @Min, @Max 같은 걸로 유효성 검사도 간단하게 처리할 수 있어요.",
+      "timestamp": "오전 11:26"
+    },
+    {
+      "authorId": "나구원",
+      "content": "TypeScript 기반이라 타입 안전성도 보장되고, npm에 배포해서 누구나 사용할 수 있어요!",
+      "timestamp": "오전 11:28"
     }
   ],
   "presets": [
     {
-      "id": "p1",
       "question": "Express Cargo는 무엇인가요?",
-      "answer": "Express Cargo는 물류 배송 최적화 플랫폼입니다. AI 기반 경로 최적화와 실시간 배송 추적을 통해 물류 업계의 효율성을 극대화하는 서비스입니다. 아래는 실시간 배송 추적 화면입니다.",
-      "image": "/logistics-delivery-tracking-map.jpg"
+      "answer": "Express Cargo는 Express.js용 미들웨어 라이브러리입니다. 클래스 기반 데코레이터를 사용해서 요청 데이터 처리를 더 쉽고 타입 안전하게 만들어줍니다. 복잡한 요청 파싱 로직을 반복 작성할 필요 없이 선언적으로 처리할 수 있어요."
     },
     {
-      "id": "p2",
-      "question": "어떤 문제를 해결하나요?",
-      "answer": "배송 경로 비효율, 실시간 추적 부재, 고객 커뮤니케이션 문제 등 전통적인 물류 산업의 페인포인트를 해결합니다. 배송 시간을 평균 30% 단축하고 비용을 20% 절감할 수 있습니다."
+      "question": "어떤 기능을 제공하나요?",
+      "answer": "바인딩 데코레이터(@Body, @Query, @Params, @Header, @Session), 검증 데코레이터(@Min, @Max, @Email, @Regexp 등), 변환 데코레이터(@Transform, @Virtual) 등을 제공합니다. 이를 통해 요청 데이터를 자동으로 매핑하고 검증할 수 있어요."
     },
     {
-      "id": "p3",
-      "question": "사용하는 기술 스택은?",
-      "answer": "Next.js, React, Node.js, PostgreSQL을 기반으로 하며, AI 모델은 TensorFlow와 PyTorch를 사용합니다. 실시간 데이터 처리를 위해 Redis와 WebSocket을 활용하고 있습니다. 아래는 기술 스택 구성도와 아키텍처입니다.",
-      "images": ["/ai-code-analysis-dashboard.jpg", "/logistics-delivery-tracking-map.jpg"]
+      "question": "사용하는 기술 스택은 뭔가요?",
+      "answer": "TypeScript를 메인 언어로 사용하고, Express.js 프레임워크 위에서 동작합니다. reflect-metadata를 활용해 데코레이터 기반 메타프로그래밍을 구현했어요. 패키지 매니저는 pnpm을 사용합니다."
     }
   ]
 }

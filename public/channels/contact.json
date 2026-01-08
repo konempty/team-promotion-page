@@ -6,7 +6,6 @@
   "isContactForm": true,
   "history": [
     {
-      "id": "1",
       "author": "Bot",
       "content": "안녕하세요! 문의사항이 있으시면 아래에 메시지를 남겨주세요. 이메일 주소를 함께 입력해주시면 빠르게 답변 드리겠습니다.",
       "timestamp": "오후 1:00",

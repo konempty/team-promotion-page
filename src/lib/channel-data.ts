@@ -1,7 +1,7 @@
 export interface Message {
   id: string
   authorId?: string      // 멤버 ID (멤버 데이터와 연결)
-  author: string         // 표시 이름 (authorId가 없을 때 사용)
+  author?: string        // 표시 이름 (authorId가 없을 때 사용, Bot 등)
   avatar?: string        // 프로필 이미지 (authorId가 없을 때 사용)
   content: string
   image?: string

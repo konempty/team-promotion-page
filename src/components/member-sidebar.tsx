@@ -62,7 +62,7 @@ function MemberItem({ member }: { member: Member }) {
         <button className="w-full flex items-center gap-3 px-2 py-1.5 rounded hover:bg-sidebar-accent transition-colors group">
           <div className="relative">
             <Avatar className="w-8 h-8">
-              <AvatarImage src={member.avatar || "/placeholder.svg"} />
+              <AvatarImage src={member.avatar || "/placeholder-user.jpg"} />
               <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                 {member.name.slice(0, 2)}
               </AvatarFallback>
@@ -87,7 +87,7 @@ function MemberItem({ member }: { member: Member }) {
           <div className="flex items-center gap-3">
             <div className="relative">
               <Avatar className="w-14 h-14 md:w-16 md:h-16">
-                <AvatarImage src={member.avatar || "/placeholder.svg"} />
+                <AvatarImage src={member.avatar || "/placeholder-user.jpg"} />
                 <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
                   {member.name.slice(0, 2)}
                 </AvatarFallback>

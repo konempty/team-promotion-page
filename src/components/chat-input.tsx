@@ -135,7 +135,7 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
               <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
               <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
             </div>
-            <span>Bot가 입력 중입니다...</span>
+            <span>Bot이 입력 중입니다...</span>
           </div>
         )}
 

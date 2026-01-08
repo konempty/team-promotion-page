@@ -1,34 +1,146 @@
 [
   {
-    "id": "1",
-    "name": "팀장",
-    "role": "Team Leader",
+    "id": "김한빈",
+    "name": "김한빈",
+    "role": "Team Leader, Kakao",
+    "status": "online",
+    "avatar": "/avatars/kim-hanbin.png",
+    "bio": "카카오에서 4년차로 일하고 있는 BE개발자예요. Beyond Imagination의 팀장으로 팀의 비전과 방향성을 제시합니다!"
+  },
+  {
+    "id": "강민준",
+    "name": "강민준",
+    "role": "취준생",
+    "status": "online",
+    "avatar": "/avatars/kang-minjun.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "김채원",
+    "name": "김채원",
+    "role": "취준생",
+    "status": "online",
+    "avatar": "/avatars/kim-chaewon.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "나구원",
+    "name": "나구원",
+    "role": "Bithumb",
+    "status": "online",
+    "avatar": "/avatars/na-guwon.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "문인규",
+    "name": "문인규",
+    "role": "스타트업",
+    "status": "online",
+    "avatar": "/avatars/moon-ingyu.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "박예훈",
+    "name": "박예훈",
+    "role": "Ground X",
+    "status": "online",
+    "avatar": "/avatars/park-yehun.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "박찬규",
+    "name": "박찬규",
+    "role": "스타트업",
     "status": "online",
     "avatar": "",
-    "bio": "Beyond Imagination의 팀장으로 팀의 비전과 방향성을 제시합니다."
+    "bio": "팀의 핵심 개발자입니다."
   },
   {
-    "id": "2",
-    "name": "개발자 A",
-    "role": "Frontend Developer",
+    "id": "백인호",
+    "name": "백인호",
+    "role": "NHN",
     "status": "online",
-    "avatar": "",
-    "bio": "React와 Next.js를 주로 다루는 프론트엔드 개발자입니다."
+    "avatar": "/avatars/baek-inho.png",
+    "bio": "팀의 핵심 개발자입니다."
   },
   {
-    "id": "3",
-    "name": "개발자 B",
-    "role": "Backend Developer",
+    "id": "윤재현",
+    "name": "윤재현",
+    "role": "취준생",
     "status": "online",
-    "avatar": "/apple-icon.png",
-    "bio": "Node.js와 데이터베이스 설계를 담당하는 백엔드 개발자입니다."
+    "avatar": "/avatars/yoon-jaehyun.png",
+    "bio": "팀의 핵심 개발자입니다."
   },
   {
-    "id": "4",
-    "name": "전 멤버 C",
-    "role": "Former Designer",
+    "id": "이미나",
+    "name": "이미나",
+    "role": "스타트업",
+    "status": "online",
+    "avatar": "/avatars/lee-mina.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "전희수",
+    "name": "전희수",
+    "role": "취준생",
+    "status": "online",
+    "avatar": "/avatars/jeon-heesu.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "정은영",
+    "name": "정은영",
+    "role": "Hyundai Autoever",
+    "status": "online",
+    "avatar": "/avatars/jung-eunyoung.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "조형준",
+    "name": "조형준",
+    "role": "취준생",
+    "status": "online",
+    "avatar": "/avatars/cho-hyungjun.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "고종영",
+    "name": "고종영",
+    "role": "Sendbird",
     "status": "offline",
-    "avatar": "/apple-icon.png",
-    "bio": "팀의 초기 디자인 시스템을 구축했던 디자이너입니다."
+    "avatar": "/avatars/ko-jongyoung.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "박예원",
+    "name": "박예원",
+    "role": "취준생",
+    "status": "offline",
+    "avatar": "/avatars/park-yewon.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "이경현",
+    "name": "이경현",
+    "role": "신한 DS",
+    "status": "offline",
+    "avatar": "/avatars/lee-kyunghyun.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "정성우",
+    "name": "정성우",
+    "role": "KT",
+    "status": "offline",
+    "avatar": "/avatars/jung-sungwoo.png",
+    "bio": "팀의 핵심 개발자입니다."
+  },
+  {
+    "id": "최윤창",
+    "name": "최윤창",
+    "role": "신한 DS",
+    "status": "offline",
+    "avatar": "/avatars/choi-yunchang.png",
+    "bio": "팀의 핵심 개발자입니다."
   }
 ]

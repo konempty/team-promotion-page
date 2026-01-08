@@ -5,37 +5,45 @@
   "icon": "Hash",
   "history": [
     {
-      "id": "1",
-      "authorId": "2",
-      "author": "개발자 A",
-      "content": "BeyondWorm 프로젝트를 소개합니다!",
+      "authorId": "박예훈",
+      "content": "안녕하세요 BeyondWorm의 프로젝트장 박예훈입니다. 저희 BeyondWorm 프로젝트를 소개합니다!",
       "timestamp": "오전 10:15"
     },
     {
-      "id": "2",
-      "authorId": "3",
-      "author": "개발자 B",
+      "authorId": "김한빈",
       "content": "이 프로젝트는 정말 흥미로운 도전이었어요.",
       "timestamp": "오전 10:17"
+    },
+    {
+      "authorId": "박예훈",
+      "content": "저도 처음 개발해보는 웹프로젝트라 힘들었지만 그만큼 많은 도움이 되었어요!",
+      "timestamp": "오전 10:18"
+    },
+    {
+      "authorId": "박찬규",
+      "content": "중간에 참여했지만 기반이 잘 짜여져 있어서 온보딩이 쉬웠어요 :)",
+      "timestamp": "오전 10:19"
     }
   ],
   "presets": [
     {
-      "id": "p1",
       "question": "BeyondWorm은 어떤 프로젝트인가요?",
-      "answer": "BeyondWorm은 AI 기반 코드 분석 및 최적화 도구입니다. 개발자들이 작성한 코드를 분석하여 성능 개선 방안을 제안하고, 버그를 사전에 감지하는 지능형 개발 도구입니다. 아래는 대시보드 화면입니다.",
-      "image": "/ai-code-analysis-dashboard.jpg"
+      "answer": "지렁이 게임을 모티브로 바닥에 부터 시작한 웹 개발 프로젝트입니다.",
+      "image": "/chatImages/beyondWorm/slither-io.png"
     },
     {
-      "id": "p2",
       "question": "주요 기능은 무엇인가요?",
-      "answer": "실시간 코드 분석, 성능 최적화 제안, 보안 취약점 탐지, 코드 리뷰 자동화, 그리고 팀 협업 기능을 제공합니다. 또한 다양한 프로그래밍 언어를 지원하며, VS Code, IntelliJ 등 주요 IDE와 통합됩니다. 아래는 주요 기능 화면들입니다.",
-      "images": ["/ai-code-analysis-dashboard.jpg", "/logistics-delivery-tracking-map.jpg"]
+      "answer": "온라인으로 지렁이 게임을 플레이할 수 있는 기능이 있습니다.",
+      "images": [
+        "/chatImages/beyondWorm/robby.png",
+        "/chatImages/beyondWorm/play1.png",
+        "/chatImages/beyondWorm/play2.png",
+        "/chatImages/beyondWorm/play3.png"
+      ]
     },
     {
-      "id": "p3",
       "question": "언제 출시되나요?",
-      "answer": "현재 베타 테스트 단계에 있으며, 2024년 하반기에 정식 출시를 목표로 하고 있습니다. 베타 테스터를 모집 중이니 관심 있으시면 문의해주세요!"
+      "answer": "최종 배포만을 앞두고 있으니 조금만 기다려 주세요!"
     }
   ]
 }

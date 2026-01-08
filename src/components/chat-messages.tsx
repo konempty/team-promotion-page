@@ -50,7 +50,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
   const isVisitor = message.isVisitor === true
 
   // Use member data if available, otherwise fall back to message data
-  const authorName = member?.name ?? message.author
+  const authorName = member?.name ?? message.author ?? "Unknown"
   // Bot uses team logo, otherwise use member avatar or message avatar
   const authorAvatar = message.isBot
     ? "/beyond_imagination.png"
@@ -62,7 +62,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
   const avatarElement = (
     <div className="relative">
       <Avatar className="w-10 h-10 cursor-pointer">
-        <AvatarImage src={authorAvatar || "/placeholder.svg"} />
+        <AvatarImage src={authorAvatar || "/placeholder-user.jpg"} />
         <AvatarFallback
           className={message.isBot ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}
         >
@@ -99,7 +99,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <Avatar className="w-14 h-14 md:w-16 md:h-16">
-                    <AvatarImage src={isVisitor ? "/placeholder.svg" : (member?.avatar || "/placeholder.svg")} />
+                    <AvatarImage src={isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg")} />
                     <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
                       {isVisitor ? authorName.slice(0, 2) : member?.name.slice(0, 2)}
                     </AvatarFallback>
