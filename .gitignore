@@ -29,3 +29,6 @@ next-env.d.ts
 /dist
 /.idea/
 /.claude/
+
+# generated thumbnails (built during CI)
+/public/thumbnails

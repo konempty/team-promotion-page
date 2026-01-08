@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-import { getAssetUrl } from "@/lib/assets"
+import { getAssetUrl, getThumbnailUrl } from "@/lib/assets"
 import type { Message, ChannelData } from "@/lib/channel-data"
 import type { Member } from "@/lib/member-data"
 import { useMembers } from "@/hooks/use-members"
@@ -99,7 +99,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
   const avatarElement = (
     <div className="relative">
       <Avatar className="w-10 h-10 cursor-pointer">
-        <AvatarImage src={getAssetUrl(authorAvatar || "/placeholder-user.jpg")} />
+        <AvatarImage src={getThumbnailUrl(authorAvatar || "/placeholder-user.jpg")} />
         <AvatarFallback
           className={message.isBot ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}
         >
@@ -139,11 +139,11 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
                   className="relative cursor-zoom-in hover:opacity-90 transition-opacity"
                   onClick={() => {
                     const avatarSrc = isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg")
-                    onImageClick(getAssetUrl(avatarSrc))
+                    onImageClick(getAssetUrl(avatarSrc)) // 원본 이미지로 모달 열기
                   }}
                 >
                   <Avatar className="w-14 h-14 md:w-16 md:h-16">
-                    <AvatarImage src={getAssetUrl(isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg"))} />
+                    <AvatarImage src={getThumbnailUrl(isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg"))} />
                     <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
                       {isVisitor ? authorName.slice(0, 2) : member?.name.slice(0, 2)}
                     </AvatarFallback>
@@ -189,10 +189,10 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
         {message.image && (
           <button
             type="button"
-            onClick={() => onImageClick(getAssetUrl(message.image || ""))}
+            onClick={() => onImageClick(getAssetUrl(message.image || ""))} // 원본 이미지로 모달 열기
             className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
           >
-            <img src={getAssetUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
+            <img src={getThumbnailUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
           </button>
         )}
         {message.images && message.images.length > 0 && (
@@ -201,11 +201,11 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
               <button
                 type="button"
                 key={index}
-                onClick={() => onImageClick(getAssetUrl(img || ""))}
+                onClick={() => onImageClick(getAssetUrl(img || ""))} // 원본 이미지로 모달 열기
                 className="relative w-full max-w-sm h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
               >
                 <img
-                  src={getAssetUrl(img || "/placeholder.svg")}
+                  src={getThumbnailUrl(img || "/placeholder.svg")}
                   alt={`Message attachment ${index + 1}`}
                   className="w-full h-full object-cover"
                 />

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-import { getAssetUrl } from "@/lib/assets"
+import { getAssetUrl, getThumbnailUrl } from "@/lib/assets"
 import { useMembers } from "@/hooks/use-members"
 import type { Member } from "@/lib/member-data"
 import ImageModal from "@/components/image-modal"
@@ -82,7 +82,7 @@ function MemberItem({ member, onImageClick }: MemberItemProps) {
         <button className="w-full flex items-center gap-3 px-2 py-1.5 rounded hover:bg-sidebar-accent transition-colors group">
           <div className="relative">
             <Avatar className="w-8 h-8">
-              <AvatarImage src={getAssetUrl(member.avatar || "/placeholder-user.jpg")} />
+              <AvatarImage src={getThumbnailUrl(member.avatar || "/placeholder-user.jpg")} />
               <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                 {member.name.slice(0, 2)}
               </AvatarFallback>
@@ -108,10 +108,10 @@ function MemberItem({ member, onImageClick }: MemberItemProps) {
             <button
               type="button"
               className="relative cursor-zoom-in hover:opacity-90 transition-opacity"
-              onClick={() => onImageClick(getAssetUrl(member.avatar || "/placeholder-user.jpg"))}
+              onClick={() => onImageClick(getAssetUrl(member.avatar || "/placeholder-user.jpg"))} // 원본 이미지로 모달 열기
             >
               <Avatar className="w-14 h-14 md:w-16 md:h-16">
-                <AvatarImage src={getAssetUrl(member.avatar || "/placeholder-user.jpg")} />
+                <AvatarImage src={getThumbnailUrl(member.avatar || "/placeholder-user.jpg")} />
                 <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
                   {member.name.slice(0, 2)}
                 </AvatarFallback>
