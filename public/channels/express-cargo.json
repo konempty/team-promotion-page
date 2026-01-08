@@ -1,0 +1,41 @@
+{
+  "id": "express-cargo",
+  "name": "Express Cargo 소개",
+  "order": 3,
+  "icon": "Hash",
+  "history": [
+    {
+      "id": "1",
+      "authorId": "1",
+      "author": "팀장",
+      "content": "Express Cargo는 우리 팀의 첫 번째 프로젝트입니다.",
+      "timestamp": "오전 11:20"
+    },
+    {
+      "id": "2",
+      "authorId": "2",
+      "author": "개발자 A",
+      "content": "물류 산업의 디지털 혁신을 목표로 하고 있어요!",
+      "timestamp": "오전 11:22"
+    }
+  ],
+  "presets": [
+    {
+      "id": "p1",
+      "question": "Express Cargo는 무엇인가요?",
+      "answer": "Express Cargo는 물류 배송 최적화 플랫폼입니다. AI 기반 경로 최적화와 실시간 배송 추적을 통해 물류 업계의 효율성을 극대화하는 서비스입니다. 아래는 실시간 배송 추적 화면입니다.",
+      "image": "/logistics-delivery-tracking-map.jpg"
+    },
+    {
+      "id": "p2",
+      "question": "어떤 문제를 해결하나요?",
+      "answer": "배송 경로 비효율, 실시간 추적 부재, 고객 커뮤니케이션 문제 등 전통적인 물류 산업의 페인포인트를 해결합니다. 배송 시간을 평균 30% 단축하고 비용을 20% 절감할 수 있습니다."
+    },
+    {
+      "id": "p3",
+      "question": "사용하는 기술 스택은?",
+      "answer": "Next.js, React, Node.js, PostgreSQL을 기반으로 하며, AI 모델은 TensorFlow와 PyTorch를 사용합니다. 실시간 데이터 처리를 위해 Redis와 WebSocket을 활용하고 있습니다. 아래는 기술 스택 구성도와 아키텍처입니다.",
+      "images": ["/ai-code-analysis-dashboard.jpg", "/logistics-delivery-tracking-map.jpg"]
+    }
+  ]
+}

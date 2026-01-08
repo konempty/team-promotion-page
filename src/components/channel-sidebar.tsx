@@ -1,19 +1,14 @@
 import { Hash } from "lucide-react"
 import { cn } from "@/lib/utils"
+import type { ChannelInfo } from "@/lib/channel-data"
 
 interface ChannelSidebarProps {
+  channels: ChannelInfo[]
   activeChannel: string
   onChannelChange: (channel: string) => void
 }
 
-const channels = [
-  { id: "team-intro", name: "팀 소개", icon: Hash },
-  { id: "beyondworm", name: "BeyondWorm 소개", icon: Hash },
-  { id: "express-cargo", name: "Express Cargo 소개", icon: Hash },
-  { id: "contact", name: "문의하기", icon: Hash },
-]
-
-export default function ChannelSidebar({ activeChannel, onChannelChange }: ChannelSidebarProps) {
+export default function ChannelSidebar({ channels, activeChannel, onChannelChange }: ChannelSidebarProps) {
   return (
     <div className="w-60 h-screen bg-sidebar flex flex-col border-r border-sidebar-border">
       {/* Server Header */}
@@ -31,22 +26,19 @@ export default function ChannelSidebar({ activeChannel, onChannelChange }: Chann
         </div>
 
         <div className="space-y-0.5 px-2">
-          {channels.map((channel) => {
-            const Icon = channel.icon
-            return (
-              <button
-                key={channel.id}
-                onClick={() => onChannelChange(channel.id)}
-                className={cn(
-                  "w-full flex items-center gap-2 px-2 py-1.5 rounded text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors",
-                  activeChannel === channel.id && "bg-sidebar-accent text-sidebar-accent-foreground",
-                )}
-              >
-                <Icon className="w-5 h-5 flex-shrink-0" />
-                <span className="text-sm font-medium truncate">{channel.name}</span>
-              </button>
-            )
-          })}
+          {channels.map((channel) => (
+            <button
+              key={channel.id}
+              onClick={() => onChannelChange(channel.id)}
+              className={cn(
+                "w-full flex items-center gap-2 px-2 py-1.5 rounded text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors",
+                activeChannel === channel.id && "bg-sidebar-accent text-sidebar-accent-foreground",
+              )}
+            >
+              <Hash className="w-5 h-5 flex-shrink-0" />
+              <span className="text-sm font-medium truncate">{channel.name}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>

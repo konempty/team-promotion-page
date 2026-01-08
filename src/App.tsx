@@ -2,6 +2,7 @@ import { useState } from "react"
 import DiscordLayout from "@/components/discord-layout"
 import SplashScreen from "@/components/splash-screen"
 import { Toaster } from "@/components/ui/toaster"
+import { VisitorProvider } from "@/contexts/visitor-context"
 
 function App() {
   const [showSplash, setShowSplash] = useState(true)
@@ -11,10 +12,10 @@ function App() {
   }
 
   return (
-    <>
+    <VisitorProvider>
       <DiscordLayout />
       <Toaster />
-    </>
+    </VisitorProvider>
   )
 }
 

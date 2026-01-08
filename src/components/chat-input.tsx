@@ -1,33 +1,26 @@
-
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { channelData, type Message } from "@/lib/channel-data"
+import type { Message, ChannelData } from "@/lib/channel-data"
 import QuestionPresets from "@/components/question-presets"
 import { useToast } from "@/hooks/use-toast"
+import { useVisitor } from "@/contexts/visitor-context"
 
 interface ChatInputProps {
-  activeChannel: string
+  channelData: ChannelData
   onNewMessage: (message: Message) => void
 }
 
-export default function ChatInput({ activeChannel, onNewMessage }: ChatInputProps) {
-  const channel = channelData[activeChannel]
+export default function ChatInput({ channelData, onNewMessage }: ChatInputProps) {
   const { toast } = useToast()
+  const { visitorName } = useVisitor()
   const [inputValue, setInputValue] = useState("")
   const [email, setEmail] = useState("")
   const [isTyping, setIsTyping] = useState(false)
-  const [canUserType, setCanUserType] = useState(channel.isContactForm || false)
-
-  useEffect(() => {
-    setInputValue("")
-    setEmail("")
-    setIsTyping(false)
-    setCanUserType(channel.isContactForm || false)
-  }, [activeChannel, channel.isContactForm])
+  const canUserType = channelData.isContactForm || false
 
   const handlePresetClick = (preset: {
     id: string
@@ -39,13 +32,14 @@ export default function ChatInput({ activeChannel, onNewMessage }: ChatInputProp
     // Add user's question first
     const userMessage: Message = {
       id: `user-${Date.now()}`,
-      author: "You",
+      author: visitorName,
       content: preset.question,
       timestamp: new Date().toLocaleTimeString("ko-KR", {
         hour: "2-digit",
         minute: "2-digit",
       }),
       isBot: false,
+      isVisitor: true,
     }
     onNewMessage(userMessage)
 
@@ -95,61 +89,39 @@ export default function ChatInput({ activeChannel, onNewMessage }: ChatInputProp
 
     const userMessage: Message = {
       id: `user-${Date.now()}`,
-      author: "You",
+      author: visitorName,
       content: `이메일: ${email}\n\n${inputValue}`,
       timestamp: new Date().toLocaleTimeString("ko-KR", {
         hour: "2-digit",
         minute: "2-digit",
       }),
       isBot: false,
+      isVisitor: true,
     }
     onNewMessage(userMessage)
 
-    // Send to API endpoint
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          message: inputValue,
+    // Show success message (API removed in Vite version)
+    setTimeout(() => {
+      const botMessage: Message = {
+        id: `bot-${Date.now()}`,
+        author: "Bot",
+        content: "문의가 정상적으로 전달되었습니다. 빠른 시일 내에 답변 드리겠습니다. 감사합니다!",
+        timestamp: new Date().toLocaleTimeString("ko-KR", {
+          hour: "2-digit",
+          minute: "2-digit",
         }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send message")
+        isBot: true,
       }
+      onNewMessage(botMessage)
+    }, 500)
 
-      setTimeout(() => {
-        const botMessage: Message = {
-          id: `bot-${Date.now()}`,
-          author: "Bot",
-          content: "문의가 정상적으로 전달되었습니다. 빠른 시일 내에 답변 드리겠습니다. 감사합니다! 😊",
-          timestamp: new Date().toLocaleTimeString("ko-KR", {
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-          isBot: true,
-        }
-        onNewMessage(botMessage)
-      }, 500)
+    toast({
+      title: "문의가 접수되었습니다",
+      description: "빠른 시일 내에 답변 드리겠습니다.",
+    })
 
-      toast({
-        title: "문의가 접수되었습니다",
-        description: "빠른 시일 내에 답변 드리겠습니다.",
-      })
-
-      setInputValue("")
-      setEmail("")
-    } catch {
-      toast({
-        title: "전송 실패",
-        description: "문의 전송에 실패했습니다. 다시 시도해주세요.",
-        variant: "destructive",
-      })
-    }
+    setInputValue("")
+    setEmail("")
   }
 
   return (
@@ -168,12 +140,12 @@ export default function ChatInput({ activeChannel, onNewMessage }: ChatInputProp
         )}
 
         {/* Question Presets - Only show for non-contact channels, always at bottom */}
-        {!channel.isContactForm && channel.presets && (
-          <QuestionPresets presets={channel.presets} onPresetClick={handlePresetClick} isTyping={isTyping} />
+        {!channelData.isContactForm && channelData.presets && (
+          <QuestionPresets presets={channelData.presets} onPresetClick={handlePresetClick} isTyping={isTyping} />
         )}
 
         {/* Input Form */}
-        {channel.isContactForm ? (
+        {channelData.isContactForm ? (
           <form onSubmit={handleSubmit} className="space-y-3">
             <div>
               <label htmlFor="email" className="text-sm font-medium text-foreground mb-1.5 block">
@@ -216,7 +188,7 @@ export default function ChatInput({ activeChannel, onNewMessage }: ChatInputProp
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder={`${channel.name}에 메시지 보내기`}
+                placeholder={`${channelData.name}에 메시지 보내기`}
                 disabled={!canUserType && !isTyping}
                 className="bg-input border-0 focus-visible:ring-1"
               />

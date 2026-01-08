@@ -1,50 +1,24 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
-
-interface Member {
-  id: string
-  name: string
-  role: string
-  avatar?: string
-  status: "online" | "offline"
-  bio: string
-}
-
-const members: Member[] = [
-  {
-    id: "1",
-    name: "팀장",
-    role: "Team Leader",
-    status: "online",
-    bio: "Beyond Imagination의 팀장으로 팀의 비전과 방향성을 제시합니다.",
-  },
-  {
-    id: "2",
-    name: "개발자 A",
-    role: "Frontend Developer",
-    status: "online",
-    bio: "React와 Next.js를 주로 다루는 프론트엔드 개발자입니다.",
-  },
-  {
-    id: "3",
-    name: "개발자 B",
-    role: "Backend Developer",
-    status: "online",
-    bio: "Node.js와 데이터베이스 설계를 담당하는 백엔드 개발자입니다.",
-  },
-  {
-    id: "4",
-    name: "전 멤버 C",
-    role: "Former Designer",
-    status: "offline",
-    bio: "팀의 초기 디자인 시스템을 구축했던 디자이너입니다.",
-  },
-]
+import { useMembers } from "@/hooks/use-members"
+import type { Member } from "@/lib/member-data"
 
 export default function MemberSidebar() {
+  const { members, isLoading } = useMembers()
+
   const onlineMembers = members.filter((m) => m.status === "online")
   const offlineMembers = members.filter((m) => m.status === "offline")
+
+  if (isLoading) {
+    return (
+      <div className="w-60 h-screen bg-sidebar flex flex-col border-l border-sidebar-border">
+        <div className="flex-1 overflow-y-auto p-4 pt-12 md:pt-4">
+          <div className="text-sm text-muted-foreground">로딩 중...</div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="w-60 h-screen bg-sidebar flex flex-col border-l border-sidebar-border">
@@ -97,8 +71,8 @@ function MemberItem({ member }: { member: Member }) {
               className={cn(
                 "absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-sidebar",
                 member.status === "online"
-                  ? "bg-[color:var(--color-online-status)]"
-                  : "bg-[color:var(--color-offline-status)]",
+                  ? "bg-(--color-online-status)"
+                  : "bg-(--color-offline-status)",
               )}
             />
           </div>
@@ -122,8 +96,8 @@ function MemberItem({ member }: { member: Member }) {
                 className={cn(
                   "absolute bottom-0 right-0 w-4 h-4 md:w-5 md:h-5 rounded-full border-4 border-card",
                   member.status === "online"
-                    ? "bg-[color:var(--color-online-status)]"
-                    : "bg-[color:var(--color-offline-status)]",
+                    ? "bg-(--color-online-status)"
+                    : "bg-(--color-offline-status)",
                 )}
               />
             </div>
