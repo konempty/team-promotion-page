@@ -5,7 +5,8 @@ import { getAssetUrl } from "@/lib/assets"
 import type { Message, ChannelData } from "@/lib/channel-data"
 import type { Member } from "@/lib/member-data"
 import { useMembers } from "@/hooks/use-members"
-import { useEffect, useRef, useMemo, type ReactNode } from "react"
+import { useEffect, useRef, useMemo, useState, type ReactNode } from "react"
+import ImageModal from "@/components/image-modal"
 
 // \n을 줄바꿈으로 변환
 function formatContent(content: string): ReactNode {
@@ -28,6 +29,7 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
   const { members } = useMembers()
   const messages = channelData.history
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [modalImage, setModalImage] = useState<string | null>(null)
 
   const allMessages = [...messages, ...newMessages]
 
@@ -42,19 +44,31 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [newMessages])
 
+  const handleImageClick = (src: string) => {
+    setModalImage(src)
+  }
+
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-4">
-      {allMessages.map((message) => (
-        <MessageItem
-          key={message.id}
-          message={message}
-          memberMap={memberMap}
-          leaderId={channelData.leaderId}
-          leaderTitle={channelData.leaderTitle}
-        />
-      ))}
-      <div ref={messagesEndRef} />
-    </div>
+    <>
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {allMessages.map((message) => (
+          <MessageItem
+            key={message.id}
+            message={message}
+            memberMap={memberMap}
+            leaderId={channelData.leaderId}
+            leaderTitle={channelData.leaderTitle}
+            onImageClick={handleImageClick}
+          />
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+      <ImageModal
+        src={modalImage || ""}
+        isOpen={!!modalImage}
+        onClose={() => setModalImage(null)}
+      />
+    </>
   )
 }
 
@@ -63,9 +77,10 @@ interface MessageItemProps {
   memberMap: Map<string, Member>
   leaderId?: string
   leaderTitle?: string
+  onImageClick: (src: string) => void
 }
 
-function MessageItem({ message, memberMap, leaderId, leaderTitle }: MessageItemProps) {
+function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }: MessageItemProps) {
   // Get member info if authorId exists
   const member = message.authorId ? memberMap.get(message.authorId) : undefined
   const isVisitor = message.isVisitor === true
@@ -119,7 +134,14 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle }: MessageItemP
           <PopoverContent side="right" align="start" className="w-72 md:w-80 bg-card border-border">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="relative">
+                <button
+                  type="button"
+                  className="relative cursor-zoom-in hover:opacity-90 transition-opacity"
+                  onClick={() => {
+                    const avatarSrc = isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg")
+                    onImageClick(getAssetUrl(avatarSrc))
+                  }}
+                >
                   <Avatar className="w-14 h-14 md:w-16 md:h-16">
                     <AvatarImage src={getAssetUrl(isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg"))} />
                     <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
@@ -134,7 +156,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle }: MessageItemP
                         : "bg-(--color-offline-status)",
                     )}
                   />
-                </div>
+                </button>
                 <div>
                   <h4 className="font-semibold text-card-foreground">{isVisitor ? authorName : member?.name}</h4>
                   <p className="text-sm text-muted-foreground">{isVisitor ? "Visitor" : member?.role}</p>
@@ -165,20 +187,29 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle }: MessageItemP
         </div>
         <div className="text-foreground leading-relaxed mt-1">{formatContent(message.content)}</div>
         {message.image && (
-          <div className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden">
+          <button
+            type="button"
+            onClick={() => onImageClick(getAssetUrl(message.image || ""))}
+            className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
+          >
             <img src={getAssetUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
-          </div>
+          </button>
         )}
         {message.images && message.images.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
             {message.images.map((img, index) => (
-              <div key={index} className="relative w-full max-w-sm h-48 rounded overflow-hidden">
+              <button
+                type="button"
+                key={index}
+                onClick={() => onImageClick(getAssetUrl(img || ""))}
+                className="relative w-full max-w-sm h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
+              >
                 <img
                   src={getAssetUrl(img || "/placeholder.svg")}
                   alt={`Message attachment ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </button>
             ))}
           </div>
         )}

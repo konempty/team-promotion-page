@@ -1,12 +1,15 @@
+import { useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { getAssetUrl } from "@/lib/assets"
 import { useMembers } from "@/hooks/use-members"
 import type { Member } from "@/lib/member-data"
+import ImageModal from "@/components/image-modal"
 
 export default function MemberSidebar() {
   const { members, isLoading } = useMembers()
+  const [modalImage, setModalImage] = useState<string | null>(null)
 
   const onlineMembers = members.filter((m) => m.status === "online")
   const offlineMembers = members.filter((m) => m.status === "offline")
@@ -21,42 +24,58 @@ export default function MemberSidebar() {
     )
   }
 
-  return (
-    <div className="w-60 h-screen bg-sidebar flex flex-col border-l border-sidebar-border">
-      <div className="flex-1 overflow-y-auto p-4 pt-12 md:pt-4">
-        {/* Online Members */}
-        {onlineMembers.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-              현재 팀 인원 — {onlineMembers.length}
-            </h3>
-            <div className="space-y-2">
-              {onlineMembers.map((member) => (
-                <MemberItem key={member.id} member={member} />
-              ))}
-            </div>
-          </div>
-        )}
+  const handleImageClick = (src: string) => {
+    setModalImage(src)
+  }
 
-        {/* Offline Members */}
-        {offlineMembers.length > 0 && (
-          <div>
-            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-              탈퇴 인원 — {offlineMembers.length}
-            </h3>
-            <div className="space-y-2">
-              {offlineMembers.map((member) => (
-                <MemberItem key={member.id} member={member} />
-              ))}
+  return (
+    <>
+      <div className="w-60 h-screen bg-sidebar flex flex-col border-l border-sidebar-border">
+        <div className="flex-1 overflow-y-auto p-4 pt-12 md:pt-4">
+          {/* Online Members */}
+          {onlineMembers.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                현재 팀 인원 — {onlineMembers.length}
+              </h3>
+              <div className="space-y-2">
+                {onlineMembers.map((member) => (
+                  <MemberItem key={member.id} member={member} onImageClick={handleImageClick} />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Offline Members */}
+          {offlineMembers.length > 0 && (
+            <div>
+              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                탈퇴 인원 — {offlineMembers.length}
+              </h3>
+              <div className="space-y-2">
+                {offlineMembers.map((member) => (
+                  <MemberItem key={member.id} member={member} onImageClick={handleImageClick} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      <ImageModal
+        src={modalImage || ""}
+        isOpen={!!modalImage}
+        onClose={() => setModalImage(null)}
+      />
+    </>
   )
 }
 
-function MemberItem({ member }: { member: Member }) {
+interface MemberItemProps {
+  member: Member
+  onImageClick: (src: string) => void
+}
+
+function MemberItem({ member, onImageClick }: MemberItemProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -86,7 +105,11 @@ function MemberItem({ member }: { member: Member }) {
       <PopoverContent side="left" align="start" className="w-72 md:w-80 bg-card border-border">
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <div className="relative">
+            <button
+              type="button"
+              className="relative cursor-zoom-in hover:opacity-90 transition-opacity"
+              onClick={() => onImageClick(getAssetUrl(member.avatar || "/placeholder-user.jpg"))}
+            >
               <Avatar className="w-14 h-14 md:w-16 md:h-16">
                 <AvatarImage src={getAssetUrl(member.avatar || "/placeholder-user.jpg")} />
                 <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
@@ -101,7 +124,7 @@ function MemberItem({ member }: { member: Member }) {
                     : "bg-(--color-offline-status)",
                 )}
               />
-            </div>
+            </button>
             <div>
               <h4 className="font-semibold text-card-foreground">{member.name}</h4>
               <p className="text-sm text-muted-foreground">{member.role}</p>
