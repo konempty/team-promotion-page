@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { getAssetUrl } from "@/lib/assets"
 
 interface SplashScreenProps {
   onComplete: () => void
@@ -28,7 +29,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         <div className="mb-8 flex justify-center">
           <div className="bg-white rounded-full p-6 shadow-2xl">
             <img
-              src="/beyond_imagination.png"
+              src={getAssetUrl("/beyond_imagination.png")}
               alt="Beyond Imagination Logo"
               width={200}
               height={200}

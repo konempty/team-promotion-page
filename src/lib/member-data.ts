@@ -1,3 +1,5 @@
+import { getAssetUrl } from "./assets"
+
 export interface Member {
   id: string
   name: string
@@ -8,7 +10,7 @@ export interface Member {
 }
 
 export async function fetchMembers(): Promise<Member[]> {
-  const response = await fetch('/members.json')
+  const response = await fetch(getAssetUrl("/members.json"))
   if (!response.ok) {
     throw new Error('Failed to fetch members')
   }

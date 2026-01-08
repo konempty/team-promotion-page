@@ -36,9 +36,11 @@ export interface ChannelInfo {
   icon: string
 }
 
+import { getAssetUrl } from "./assets"
+
 // Fetch channel list from index.json
 export async function fetchChannelList(): Promise<string[]> {
-  const response = await fetch('/channels/index.json')
+  const response = await fetch(getAssetUrl("/channels/index.json"))
   if (!response.ok) {
     throw new Error('Failed to fetch channel list')
   }
@@ -47,7 +49,7 @@ export async function fetchChannelList(): Promise<string[]> {
 
 // Fetch single channel data
 export async function fetchChannelData(channelId: string): Promise<ChannelData> {
-  const response = await fetch(`/channels/${channelId}.json`)
+  const response = await fetch(getAssetUrl(`/channels/${channelId}.json`))
   if (!response.ok) {
     throw new Error(`Failed to fetch channel: ${channelId}`)
   }

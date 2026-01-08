@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { getAssetUrl } from "@/lib/assets"
 import type { Message, ChannelData } from "@/lib/channel-data"
 import type { Member } from "@/lib/member-data"
 import { useMembers } from "@/hooks/use-members"
@@ -62,7 +63,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
   const avatarElement = (
     <div className="relative">
       <Avatar className="w-10 h-10 cursor-pointer">
-        <AvatarImage src={authorAvatar || "/placeholder-user.jpg"} />
+        <AvatarImage src={getAssetUrl(authorAvatar || "/placeholder-user.jpg")} />
         <AvatarFallback
           className={message.isBot ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}
         >
@@ -99,7 +100,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <Avatar className="w-14 h-14 md:w-16 md:h-16">
-                    <AvatarImage src={isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg")} />
+                    <AvatarImage src={getAssetUrl(isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg"))} />
                     <AvatarFallback className="bg-primary text-primary-foreground text-base md:text-lg">
                       {isVisitor ? authorName.slice(0, 2) : member?.name.slice(0, 2)}
                     </AvatarFallback>
@@ -141,7 +142,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
         <div className="text-foreground leading-relaxed mt-1">{message.content}</div>
         {message.image && (
           <div className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden">
-            <img src={message.image || "/placeholder.svg"} alt="Message attachment" className="w-full h-full object-cover" />
+            <img src={getAssetUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
           </div>
         )}
         {message.images && message.images.length > 0 && (
@@ -149,7 +150,7 @@ function MessageItem({ message, memberMap }: MessageItemProps) {
             {message.images.map((img, index) => (
               <div key={index} className="relative w-full max-w-sm h-48 rounded overflow-hidden">
                 <img
-                  src={img || "/placeholder.svg"}
+                  src={getAssetUrl(img || "/placeholder.svg")}
                   alt={`Message attachment ${index + 1}`}
                   className="w-full h-full object-cover"
                 />

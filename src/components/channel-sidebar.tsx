@@ -1,5 +1,6 @@
 import { Hash } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { getAssetUrl } from "@/lib/assets"
 import type { ChannelInfo } from "@/lib/channel-data"
 
 interface ChannelSidebarProps {
@@ -14,7 +15,7 @@ export default function ChannelSidebar({ channels, activeChannel, onChannelChang
       {/* Server Header */}
       <div className="h-12 px-4 flex items-center gap-2 border-b border-sidebar-border shadow-sm hover:bg-sidebar-accent cursor-pointer transition-colors">
         <div className="relative w-8 h-8 flex-shrink-0">
-          <img src="/beyond_imagination.png" alt="Beyond Imagination Logo" className="w-full h-full object-contain" />
+          <img src={getAssetUrl("/beyond_imagination.png")} alt="Beyond Imagination Logo" className="w-full h-full object-contain" />
         </div>
         <h1 className="font-semibold text-sidebar-foreground">Beyond Imagination</h1>
       </div>
