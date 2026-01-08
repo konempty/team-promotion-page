@@ -102,7 +102,7 @@ function MemberItem({ member, onImageClick }: MemberItemProps) {
           </div>
         </button>
       </PopoverTrigger>
-      <PopoverContent side="left" align="start" className="w-72 md:w-80 bg-card border-border">
+      <PopoverContent side="bottom" align="end" sideOffset={8} collisionPadding={16} className="w-[calc(100vw-32px)] max-w-80 bg-card border-border">
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <button

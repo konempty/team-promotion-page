@@ -131,7 +131,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
               {avatarElement}
             </button>
           </PopoverTrigger>
-          <PopoverContent side="right" align="start" className="w-72 md:w-80 bg-card border-border">
+          <PopoverContent side="bottom" align="start" sideOffset={8} collisionPadding={16} className="w-[calc(100vw-32px)] max-w-80 bg-card border-border">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <button
