@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs sed -i '' '/^\"\"\"\"use client\"\"\"\"$/d; /^''''use client''''$/d')",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm add:*)"
+    ]
+  }
+}
