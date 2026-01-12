@@ -9,19 +9,21 @@ interface QuestionPresetsProps {
 
 export default function QuestionPresets({ presets, onPresetClick, isTyping }: QuestionPresetsProps) {
   return (
-    <div className="flex flex-wrap gap-1.5 md:gap-2 max-w-full">
-      {presets.map((preset) => (
-        <Button
-          key={preset.id}
-          variant="secondary"
-          size="sm"
-          onClick={() => onPresetClick(preset)}
-          disabled={isTyping}
-          className="text-xs md:text-sm whitespace-nowrap"
-        >
-          {preset.question}
-        </Button>
-      ))}
+    <div className="max-h-[90px] md:max-h-[80px] overflow-y-auto">
+      <div className="flex flex-wrap gap-1.5 md:gap-2 max-w-full">
+        {presets.map((preset) => (
+          <Button
+            key={preset.id}
+            variant="secondary"
+            size="sm"
+            onClick={() => onPresetClick(preset)}
+            disabled={isTyping}
+            className="text-xs md:text-sm whitespace-nowrap"
+          >
+            {preset.question}
+          </Button>
+        ))}
+      </div>
     </div>
   )
 }
