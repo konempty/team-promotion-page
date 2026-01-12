@@ -13,7 +13,7 @@
     "role": "취준생",
     "status": "online",
     "avatar": "/avatars/kang-minjun.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "세상에 스며들어 개인에게 선한 영향을 미치는 소프트웨어의 가치를 알고, 그러한 소프트웨어를 만들기 위해 노력합니다."
   },
   {
     "id": "김채원",
@@ -21,7 +21,7 @@
     "role": "취준생",
     "status": "online",
     "avatar": "/avatars/kim-chaewon.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "새로운 기술 배우는 거 너무 재밌어요! 팀원들과 함께 성장하는 매 순간이 즐겁습니다 :)"
   },
   {
     "id": "나구원",
@@ -29,7 +29,7 @@
     "role": "Bithumb",
     "status": "online",
     "avatar": "/avatars/na-guwon.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "세상을 바꾸는 프로그램을 만들고 싶습니다."
   },
   {
     "id": "문인규",
@@ -37,7 +37,7 @@
     "role": "스타트업",
     "status": "online",
     "avatar": "/avatars/moon-ingyu.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "꾸준한 학습을 통해 지속적으로 성장하는 개발자가 되고 싶습니다."
   },
   {
     "id": "박예훈",
@@ -45,7 +45,7 @@
     "role": "Ground X",
     "status": "online",
     "avatar": "/avatars/park-yehun.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "게임 개발자로서 쌓아온 경험을 바탕으로 최적화와 성능에 대해 깊이 고민합니다."
   },
   {
     "id": "박찬규",
@@ -53,7 +53,7 @@
     "role": "스타트업",
     "status": "online",
     "avatar": "",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "문제의 본질을 파악하고 효율적인 해결책을 찾는 것을 중요하게 생각합니다."
   },
   {
     "id": "백인호",
@@ -61,7 +61,7 @@
     "role": "NHN",
     "status": "online",
     "avatar": "/avatars/baek-inho.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "기술적인 성장과 비즈니스의 성장을 함께 고민합니다."
   },
   {
     "id": "윤재현",
@@ -69,7 +69,7 @@
     "role": "취준생",
     "status": "online",
     "avatar": "/avatars/yoon-jaehyun.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "많은 사람들에게 기쁨을 주는 개발을 하고 싶습니다."
   },
   {
     "id": "이미나",
@@ -77,7 +77,7 @@
     "role": "스타트업",
     "status": "online",
     "avatar": "/avatars/lee-mina.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "함께 성장할 수 있는 개발자가 되고 싶습니다."
   },
   {
     "id": "전희수",
@@ -85,7 +85,7 @@
     "role": "취준생",
     "status": "online",
     "avatar": "/avatars/jeon-heesu.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "꾸준히 성장하고자 하는 개발자입니다."
   },
   {
     "id": "정은영",
@@ -93,7 +93,7 @@
     "role": "Hyundai Autoever",
     "status": "online",
     "avatar": "/avatars/jung-eunyoung.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "깊게 공부하는 개발자가 되기 위해 노력합니다."
   },
   {
     "id": "조형준",
@@ -101,7 +101,7 @@
     "role": "취준생",
     "status": "online",
     "avatar": "/avatars/cho-hyungjun.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "탄탄한 기본기를 바탕으로 신뢰할 수 있는 코드를 작성하는 개발자가 되고자 합니다."
   },
   {
     "id": "고종영",
@@ -109,7 +109,7 @@
     "role": "Sendbird",
     "status": "offline",
     "avatar": "/avatars/ko-jongyoung.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "읽기좋은 코드, 사람들의 불편함을 해결 해줄 수 있는 코드를 쓸 수 있는 개발자가 되기 위해 노력하고 있습니다."
   },
   {
     "id": "박예원",
@@ -117,7 +117,15 @@
     "role": "취준생",
     "status": "offline",
     "avatar": "/avatars/park-yewon.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "배움의 즐거움을 느끼며 함께 성장하고 싶습니다."
+  },
+  {
+    "id": "심다송",
+    "name": "심다송",
+    "role": "FastFive",
+    "status": "offline",
+    "avatar": "/avatars/sim-dasong.png",
+    "bio": "즐거운 마음으로 개발하며 팀과 함께 성장하는 것을 좋아합니다."
   },
   {
     "id": "이경현",
@@ -125,7 +133,7 @@
     "role": "신한 DS",
     "status": "offline",
     "avatar": "/avatars/lee-kyunghyun.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "함께 일하는 개발자가 되고 싶습니다."
   },
   {
     "id": "정성우",
@@ -133,7 +141,15 @@
     "role": "KT",
     "status": "offline",
     "avatar": "/avatars/jung-sungwoo.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "I wanna be a self-motivated person. And I also want to be a person who can inspire you a lot. \uD83D\uDE09"
+  },
+  {
+    "id": "최용주",
+    "name": "최용주",
+    "role": "LG Display",
+    "status": "offline",
+    "avatar": "/avatars/choi-yongju.jpg",
+    "bio": "AI와 빅데이터 기술을 적용하여 많은 사람들에 도움이 되는 Data Scientist가 되고 싶습니다."
   },
   {
     "id": "최윤창",
@@ -141,6 +157,6 @@
     "role": "신한 DS",
     "status": "offline",
     "avatar": "/avatars/choi-yunchang.png",
-    "bio": "팀의 핵심 개발자입니다."
+    "bio": "사람들이 필요로하는 서비스를 고민하고 만들고 싶은 개발자입니다."
   }
 ]

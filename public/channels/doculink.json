@@ -1,0 +1,65 @@
+{
+  "id": "doculink",
+  "name": "DocuLink 소개",
+  "order": 5,
+  "icon": "Hash",
+  "leaderId": "나구원",
+  "leaderTitle": "프로젝트장",
+  "history": [
+    {
+      "authorId": "나구원",
+      "content": "안녕하세요! DocuLink의 프로젝트장 나구원입니다. 저희 프로젝트를 소개할게요!"
+    },
+    {
+      "authorId": "윤재현",
+      "content": "Confluence에 문서가 많아지면 어떤 문서들이 있는지, 서로 어떻게 연결되어 있는지 파악하기 어렵잖아요. 그걸 해결하고 싶어서 시작한 프로젝트예요!"
+    },
+    {
+      "authorId": "고종영",
+      "content": "문서들을 임베딩해서 비슷한 성향의 문서들을 한눈에 볼 수 있도록 그래프로 시각화했어요."
+    },
+    {
+      "authorId": "이미나",
+      "content": "Atlassian의 Forge 프레임워크를 활용해서 Confluence에 직접 설치할 수 있는 앱으로 만들었답니다!"
+    },
+    {
+      "authorId": "나구원",
+      "content": "더 궁금하신 점은 아래 질문을 참고해 주세요!"
+    }
+  ],
+  "presets": [
+    {
+      "question": "DocuLink는 어떤 프로젝트인가요?",
+      "answer": "DocuLink는 Atlassian Confluence용 문서 시각화 앱이에요. 📊\nObsidian의 그래프 뷰에서 영감을 받았지만, 개인 노트가 아닌 팀 협업 환경인 Confluence에 적용했어요. 문서들의 관계를 그래프로 시각화하여 부서 간 중복 문서화 문제를 해결하고, 핵심 정보에 빠르게 접근할 수 있도록 도와줍니다!"
+    },
+    {
+      "question": "어떤 기능을 제공하나요?",
+      "answer": "2D/3D 형태의 그래프로 문서 간 관계를 시각화하고, 검색 결과를 그래프 위에 하이라이트로 표시해요. 📈\n노드에 마우스를 올리면 문서 제목, 작성자, 생성일 등의 정보도 바로 확인할 수 있습니다!\n자세한 설명과 시연 영상은 Devpost에서 확인하실 수 있어요.\n🔗 https://devpost.com/software/doculink",
+      "images": [
+        "/chatImages/doculink/use1.png",
+        "/chatImages/doculink/use2.png",
+        "/chatImages/doculink/use3.png"
+      ]
+    },
+    {
+      "question": "사용하는 기술 스택은 뭔가요?",
+      "answer": "JavaScript와 React를 사용하고, Atlassian의 Forge 프레임워크로 개발했어요. 🔧\nForge의 scheduledTrigger를 활용해 문서를 주기적으로 분석하고 링크를 감지한 후, API를 통해 프론트엔드로 데이터를 제공하는 구조입니다!"
+    },
+    {
+      "question": "소스코드는 오픈되어 있나요?",
+      "answer": "네! DocuLink도 오픈소스 프로젝트입니다. GitHub에서 소스코드를 확인하실 수 있어요.\n🔗 https://github.com/Beyond-Imagination/DocuLink\n관심 있으시다면 Star도 눌러주시고, 기여도 환영합니다!"
+    },
+    {
+      "question": "개발 과정을 볼 수 있나요?",
+      "answer": "네! 저희가 진행한 개발 과정과 작성한 문서들을 노션 페이지에서 확인하실 수 있어요. 📝\n🔗 https://beyond-imagination.notion.site/DocuLink-2bab75b78b484c02b159a47e8d606360\n기획부터 개발까지의 여정이 궁금하시다면 방문해 보세요!"
+    },
+    {
+      "question": "공모전에 참여한 적 있나요?",
+      "answer": "네! Atlassian에서 주최한 Codegeist 2024 대회에 출품했어요. 🏆\n아쉽게 수상은 하지 못했지만, 대회를 통해 개발을 완료하고 실제로 배포까지 완료했습니다! Atlassian Marketplace에서 만나보실 수 있어요. 🚀"
+    },
+    {
+      "question": "프로젝트에 참여할 수 있나요?",
+      "answer": "아쉽게도 DocuLink는 현재 종료된 프로젝트예요. 😢\nCodegeist 2024 출품과 배포를 목표로 진행했고, 그 목표를 달성하여 마무리되었습니다. 추가 프로젝트원 모집은 진행하고 있지 않지만, 다른 진행 중인 프로젝트에는 참여하실 수 있어요!"
+    }
+  ]
+}

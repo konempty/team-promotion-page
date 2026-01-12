@@ -1,0 +1,75 @@
+{
+  "id": "fienmee",
+  "name": "Fienmee 소개",
+  "order": 4,
+  "icon": "Hash",
+  "leaderId": "정은영",
+  "leaderTitle": "프로젝트장",
+  "history": [
+    {
+      "authorId": "정은영",
+      "content": "안녕하세요! Fienmee의 프로젝트장 정은영입니다. 저희 프로젝트를 소개할게요!"
+    },
+    {
+      "authorId": "김채원",
+      "content": "피엔미는 전국의 축제와 행사 정보를 한눈에 볼 수 있는 커뮤니티 플랫폼이에요. 지방 축제를 더 많은 사람들에게 알리고 싶어서 시작했어요!"
+    },
+    {
+      "authorId": "윤재현",
+      "content": "웹과 모바일 앱을 동시에 개발하고 있어서 어디서든 편하게 사용할 수 있도록 준비 중이에요."
+    },
+    {
+      "authorId": "나구원",
+      "content": "축제에 관심 있는 사람들끼리 의견을 나누고 함께 갈 사람도 구할 수 있는 공간을 만들고 있습니다!"
+    },
+    {
+      "authorId": "전희수",
+      "content": "저도 함께 개발에 참여하고 있어요! 많은 사람들이 지역 축제의 매력을 발견할 수 있도록 열심히 만들고 있습니다."
+    },
+    {
+      "authorId": "정은영",
+      "content": "더 궁금하신 점은 아래 질문을 참고해 주세요!"
+    }
+  ],
+  "presets": [
+    {
+      "question": "Fienmee는 어떤 프로젝트인가요?",
+      "answer": "Fienmee(피엔미)는 전국의 축제와 행사를 위한 커뮤니티 플랫폼이에요. 🎪\n축제에 대한 공지나 후기를 공유하고, 사람들끼리 의견을 나누며 함께 축제를 즐길 수 있는 공간을 만들고 있어요. 지방 축제를 활성화하고 더 많은 사람들에게 알리는 것이 저희의 목표입니다!"
+    },
+    {
+      "question": "어떤 기능을 제공하나요?",
+      "answer": "축제 및 행사 정보 조회, 커뮤니티 게시판을 통한 의견 공유, 함께 갈 사람 모집 등의 기능을 준비하고 있어요. 📱\n웹과 모바일 앱 모두 지원해서 어디서든 편하게 이용하실 수 있습니다!"
+    },
+    {
+      "question": "사용하는 기술 스택은 뭔가요?",
+      "answer": "TypeScript를 메인 언어로 사용하고 있어요. 모노레포 구조로 Server, Web, App을 함께 관리하고 있습니다.\n모바일 앱은 iOS와 Android 크로스플랫폼으로 개발 중이고, 패키지 매니저는 pnpm을 사용해요. Node.js 20 환경에서 동작합니다!"
+    },
+    {
+      "question": "소스코드는 오픈되어 있나요?",
+      "answer": "네! Fienmee도 오픈소스 프로젝트입니다. GitHub에서 소스코드를 확인하실 수 있어요.\n🔗 https://github.com/Beyond-Imagination/fienmee\n관심 있으시다면 Star도 눌러주시고, 기여도 환영합니다!"
+    },
+    {
+      "question": "개발 과정을 볼 수 있나요?",
+      "answer": "네! 저희가 진행한 개발 과정과 작성한 문서들을 노션 페이지에서 확인하실 수 있어요. 📝\n🔗 https://beyond-imagination.notion.site/Fienmee-681b57bc497344bb86821f077a42297e\n기획부터 개발까지의 여정이 궁금하시다면 방문해 보세요!"
+    },
+    {
+      "question": "공모전에 참여한 적 있나요?",
+      "answer": "네! 2025 관광 데이터 활용 공모전에 출품했어요. 🏆\n아쉽게 수상은 하지 못했지만, 공모전을 통해 개발을 완료하고 실제로 안드로이드 앱스토어에 배포까지 완료했습니다! 📱\n공모전 수상보다 더 자랑스러운 건 실제 서비스로 출시했다는 점이에요!"
+    },
+    {
+      "question": "지금 바로 사용해볼 수 있나요?",
+      "answer": "네! 원스토어에서 Fienmee를 다운로드하실 수 있어요. 📲\n🔗 https://m.onestore.co.kr/v2/ko-kr/app/0001002413\n전국의 축제 정보를 확인하고 커뮤니티에 참여해 보세요!",
+      "images": [
+        "/chatImages/fienmee/screenshot1.png",
+        "/chatImages/fienmee/screenshot2.png",
+        "/chatImages/fienmee/screenshot3.png",
+        "/chatImages/fienmee/screenshot4.png",
+        "/chatImages/fienmee/screenshot5.png"
+      ]
+    },
+    {
+      "question": "프로젝트에 참여할 수 있나요?",
+      "answer": "아쉽게도 Fienmee는 현재 종료된 프로젝트예요. 😢\n공모전 출품과 앱스토어 배포를 목표로 진행했고, 그 목표를 달성하여 마무리되었습니다. 추가 프로젝트원 모집은 진행하고 있지 않지만, 다른 진행 중인 프로젝트에는 참여하실 수 있어요!"
+    }
+  ]
+}

@@ -8,13 +8,41 @@ import { useMembers } from "@/hooks/use-members"
 import { useEffect, useRef, useMemo, useState, type ReactNode } from "react"
 import ImageModal from "@/components/image-modal"
 
-// \n을 줄바꿈으로 변환
+// URL을 하이퍼링크로 변환
+function linkify(text: string, keyPrefix: string): ReactNode[] {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  const parts = text.split(urlRegex)
+
+  return parts.map((part, i) => {
+    if (urlRegex.test(part)) {
+      // URL 끝에 붙은 특수문자 제거 (마침표, 쉼표 등)
+      const cleanUrl = part.replace(/[.,!?;:)\]}>]+$/, '')
+      const trailing = part.slice(cleanUrl.length)
+      return (
+        <span key={`${keyPrefix}-${i}`}>
+          <a
+            href={cleanUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            {cleanUrl}
+          </a>
+          {trailing}
+        </span>
+      )
+    }
+    return part
+  })
+}
+
+// \n을 줄바꿈으로 변환하고 URL을 링크로 변환
 function formatContent(content: string): ReactNode {
   const lines = content.split('\n')
 
   return lines.map((line, index) => (
     <span key={index}>
-      {line}
+      {linkify(line, `line-${index}`)}
       {index < lines.length - 1 && <br />}
     </span>
   ))
