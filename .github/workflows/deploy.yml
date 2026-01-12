@@ -41,6 +41,8 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          VITE_DISCORD_WEBHOOK_URL: ${{ secrets.VITE_DISCORD_WEBHOOK_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

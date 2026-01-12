@@ -100,25 +100,71 @@ export default function ChatInput({ channelData, onNewMessage }: ChatInputProps)
     }
     onNewMessage(userMessage)
 
-    // Show success message (API removed in Vite version)
-    setTimeout(() => {
-      const botMessage: Message = {
-        id: `bot-${Date.now()}`,
-        author: "Bot",
-        content: "문의가 정상적으로 전달되었습니다. 빠른 시일 내에 답변 드리겠습니다. 감사합니다!",
-        timestamp: new Date().toLocaleTimeString("ko-KR", {
-          hour: "numeric",
-          minute: "2-digit",
-        }),
-        isBot: true,
-      }
-      onNewMessage(botMessage)
-    }, 500)
+    // Discord 웹훅으로 문의 전송
+    const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "📬 새로운 문의가 도착했습니다!",
+                color: 0x5865f2,
+                fields: [
+                  {
+                    name: "회신 이메일",
+                    value: email,
+                    inline: true,
+                  },
+                  {
+                    name: "문의 내용",
+                    value: inputValue,
+                  },
+                ],
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          }),
+        })
 
-    toast({
-      title: "문의가 접수되었습니다",
-      description: "빠른 시일 내에 답변 드리겠습니다.",
-    })
+        setTimeout(() => {
+          const botMessage: Message = {
+            id: `bot-${Date.now()}`,
+            author: "Bot",
+            content: "문의가 정상적으로 전달되었습니다. 빠른 시일 내에 답변 드리겠습니다. 감사합니다! 📧",
+            timestamp: new Date().toLocaleTimeString("ko-KR", {
+              hour: "numeric",
+              minute: "2-digit",
+            }),
+            isBot: true,
+          }
+          onNewMessage(botMessage)
+        }, 500)
+
+        toast({
+          title: "문의가 접수되었습니다",
+          description: "빠른 시일 내에 답변 드리겠습니다.",
+        })
+      } catch {
+        toast({
+          title: "전송 실패",
+          description: "문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
+          variant: "destructive",
+        })
+        return
+      }
+    } else {
+      toast({
+        title: "설정 오류",
+        description: "문의 기능이 현재 사용 불가능합니다.",
+        variant: "destructive",
+      })
+      return
+    }
 
     setInputValue("")
     setEmail("")
