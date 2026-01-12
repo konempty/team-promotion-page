@@ -206,3 +206,38 @@ public/
 > **주의**: 아바타 파일명은 한글 인코딩 문제를 피하기 위해 영문으로 작성하세요.
 
 JSON에서 이미지 경로는 `/`로 시작합니다 (예: `/chatImages/project/screenshot.jpg`)
+
+---
+
+## 문의하기 기능 설정
+
+문의하기 채널에서 사용자가 문의를 보내면 Discord 웹훅을 통해 지정된 채널로 알림이 전송됩니다.
+
+### Discord 웹훅 생성
+
+1. Discord 서버에서 문의를 받을 채널 선택
+2. 채널 설정(⚙️) → **연동** → **웹후크** 클릭
+3. **새 웹후크** 버튼 클릭
+4. 웹후크 이름 설정 후 **웹후크 URL 복사**
+
+### 로컬 개발 환경 설정
+
+프로젝트 루트에 `.env` 파일 생성:
+
+```env
+VITE_DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/웹훅ID/토큰
+```
+
+### GitHub Pages 배포 설정
+
+GitHub Actions로 배포 시 Repository Secret을 설정해야 합니다:
+
+1. GitHub 레포지토리 → **Settings** 탭
+2. 좌측 메뉴 **Secrets and variables** → **Actions**
+3. **New repository secret** 클릭
+4. 아래 내용 입력:
+   - **Name**: `VITE_DISCORD_WEBHOOK_URL`
+   - **Secret**: Discord 웹훅 URL
+5. **Add secret** 클릭
+
+> **참고**: `.env` 파일은 `.gitignore`에 포함되어 있어 Git에 커밋되지 않습니다.
