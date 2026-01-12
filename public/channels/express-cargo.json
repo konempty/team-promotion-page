@@ -30,7 +30,7 @@
   "presets": [
     {
       "question": "Express Cargo는 무엇인가요?",
-      "answer": "Express Cargo는 Express.js용 미들웨어 라이브러리입니다. 클래스 기반 데코레이터를 사용해서 요청 데이터 처리를 더 쉽고 타입 안전하게 만들어줍니다. 복잡한 요청 파싱 로직을 반복 작성할 필요 없이 선언적으로 처리할 수 있어요."
+      "answer": "Express Cargo는 Express.js용 미들웨어 라이브러리예요. 클래스 기반 데코레이터를 사용해서 요청 데이터 처리를 더 쉽고 타입 안전하게 만들어줍니다. 복잡한 요청 파싱 로직을 반복 작성할 필요 없이 선언적으로 처리할 수 있어요! 📦"
     },
     {
       "question": "어떤 기능을 제공하나요?",
@@ -42,7 +42,7 @@
     },
     {
       "question": "소스코드는 오픈되어 있나요?",
-      "answer": "물론이죠! Express Cargo는 오픈소스 프로젝트입니다. GitHub에서 소스코드를 확인하실 수 있어요.\n🔗 https://github.com/Beyond-Imagination/express-cargo\n📚 공식 문서: https://beyond-imagination.github.io/express-cargo/\nnpm으로 바로 설치해서 사용할 수도 있고, 기여도 언제든 환영합니다!"
+      "answer": "네! Express Cargo는 오픈소스 프로젝트예요. GitHub에서 소스코드를 확인하실 수 있어요.\n🔗 https://github.com/Beyond-Imagination/express-cargo\n📚 공식 문서: https://beyond-imagination.github.io/express-cargo/\nnpm으로 바로 설치해서 사용할 수도 있고, 기여도 언제든 환영합니다!"
     },
     {
       "question": "개발 과정을 볼 수 있나요?",
