@@ -50,23 +50,40 @@ function formatTimeKorean(date: Date): string {
   return `${period} ${displayHours}:${displayMinutes}`
 }
 
-// 메시지에 타임스탬프가 없으면 자동 생성 (1~2분 간격)
-function generateTimestamps(messages: Message[]): Message[] {
+// 메시지에 id와 타임스탬프가 없으면 자동 생성
+function processMessages(messages: Message[], channelId: string): Message[] {
   const now = new Date()
   const totalMessages = messages.length
 
   return messages.map((message, index) => {
-    if (message.timestamp) {
-      return message
+    const result = { ...message }
+
+    // id가 없으면 자동 생성
+    if (!result.id) {
+      result.id = `${channelId}-msg-${index}`
     }
 
-    // 마지막 메시지부터 현재 시간에 가깝게, 이전 메시지는 1~2분씩 과거로
-    const minutesAgo = (totalMessages - 1 - index) * 1.5 // 평균 1.5분 간격
-    const messageTime = new Date(now.getTime() - minutesAgo * 60 * 1000)
+    // 타임스탬프가 없으면 자동 생성
+    if (!result.timestamp) {
+      // 마지막 메시지부터 현재 시간에 가깝게, 이전 메시지는 1~2분씩 과거로
+      const minutesAgo = (totalMessages - 1 - index) * 1.5 // 평균 1.5분 간격
+      const messageTime = new Date(now.getTime() - minutesAgo * 60 * 1000)
+      result.timestamp = formatTimeKorean(messageTime)
+    }
 
+    return result
+  })
+}
+
+// 프리셋에 id가 없으면 자동 생성
+function processPresets(presets: QuestionPreset[] | undefined, channelId: string): QuestionPreset[] | undefined {
+  if (!presets) return undefined
+
+  return presets.map((preset, index) => {
+    if (preset.id) return preset
     return {
-      ...message,
-      timestamp: formatTimeKorean(messageTime)
+      ...preset,
+      id: `${channelId}-preset-${index}`
     }
   })
 }
@@ -88,8 +105,11 @@ export async function fetchChannelData(channelId: string): Promise<ChannelData> 
   }
   const data: ChannelData = await response.json()
 
-  // 타임스탬프가 없는 메시지에 자동 생성
-  data.history = generateTimestamps(data.history)
+  // 메시지에 id와 타임스탬프 자동 생성
+  data.history = processMessages(data.history, channelId)
+
+  // 프리셋에 id 자동 생성
+  data.presets = processPresets(data.presets, channelId)
 
   return data
 }
