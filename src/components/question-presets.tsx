@@ -9,7 +9,7 @@ interface QuestionPresetsProps {
 
 export default function QuestionPresets({ presets, onPresetClick, isTyping }: QuestionPresetsProps) {
   return (
-    <div className="max-h-[90px] md:max-h-[90px] overflow-y-auto">
+    <div className="max-h-22.5 md:max-h-22.5 overflow-y-auto">
       <div className="flex flex-wrap gap-1.5 md:gap-2 max-w-full">
         {presets.map((preset) => (
           <Button
