@@ -14,7 +14,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       setTimeout(() => {
         onComplete()
       }, 500)
-    }, 5000)
+    }, 3500)
 
     return () => clearTimeout(timer)
   }, [onComplete])
