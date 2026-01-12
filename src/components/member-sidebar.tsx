@@ -62,9 +62,11 @@ export default function MemberSidebar() {
         </div>
       </div>
       <ImageModal
-        src={modalImage || ""}
+        images={modalImage ? [modalImage] : []}
+        currentIndex={0}
         isOpen={!!modalImage}
         onClose={() => setModalImage(null)}
+        onNavigate={() => {}}
       />
     </>
   )

@@ -57,7 +57,8 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
   const { members } = useMembers()
   const messages = channelData.history
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const [modalImage, setModalImage] = useState<string | null>(null)
+  const [modalImages, setModalImages] = useState<string[]>([])
+  const [modalIndex, setModalIndex] = useState(0)
 
   const allMessages = [...messages, ...newMessages]
 
@@ -72,8 +73,14 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [newMessages])
 
-  const handleImageClick = (src: string) => {
-    setModalImage(src)
+  const handleImageClick = (images: string[], index: number) => {
+    setModalImages(images)
+    setModalIndex(index)
+  }
+
+  const handleCloseModal = () => {
+    setModalImages([])
+    setModalIndex(0)
   }
 
   return (
@@ -92,9 +99,11 @@ export default function ChatMessages({ channelData, newMessages }: ChatMessagesP
         <div ref={messagesEndRef} />
       </div>
       <ImageModal
-        src={modalImage || ""}
-        isOpen={!!modalImage}
-        onClose={() => setModalImage(null)}
+        images={modalImages}
+        currentIndex={modalIndex}
+        isOpen={modalImages.length > 0}
+        onClose={handleCloseModal}
+        onNavigate={setModalIndex}
       />
     </>
   )
@@ -105,7 +114,7 @@ interface MessageItemProps {
   memberMap: Map<string, Member>
   leaderId?: string
   leaderTitle?: string
-  onImageClick: (src: string) => void
+  onImageClick: (images: string[], index: number) => void
 }
 
 function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }: MessageItemProps) {
@@ -167,7 +176,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
                   className="relative cursor-zoom-in hover:opacity-90 transition-opacity"
                   onClick={() => {
                     const avatarSrc = isVisitor ? "/placeholder-user.jpg" : (member?.avatar || "/placeholder-user.jpg")
-                    onImageClick(getAssetUrl(avatarSrc)) // 원본 이미지로 모달 열기
+                    onImageClick([getAssetUrl(avatarSrc)], 0) // 원본 이미지로 모달 열기
                   }}
                 >
                   <Avatar className="w-14 h-14 md:w-16 md:h-16">
@@ -217,7 +226,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
         {message.image && (
           <button
             type="button"
-            onClick={() => onImageClick(getAssetUrl(message.image || ""))} // 원본 이미지로 모달 열기
+            onClick={() => onImageClick([getAssetUrl(message.image || "")], 0)} // 원본 이미지로 모달 열기
             className="mt-2 relative w-full max-w-md h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
           >
             <img src={getThumbnailUrl(message.image || "/placeholder.svg")} alt="Message attachment" className="w-full h-full object-cover" />
@@ -229,7 +238,7 @@ function MessageItem({ message, memberMap, leaderId, leaderTitle, onImageClick }
               <button
                 type="button"
                 key={index}
-                onClick={() => onImageClick(getAssetUrl(img || ""))} // 원본 이미지로 모달 열기
+                onClick={() => onImageClick(message.images!.map(i => getAssetUrl(i || "")), index)} // 전체 이미지 배열과 클릭한 인덱스 전달
                 className="relative w-full max-w-sm h-48 rounded overflow-hidden cursor-zoom-in hover:opacity-90 transition-opacity"
               >
                 <img
